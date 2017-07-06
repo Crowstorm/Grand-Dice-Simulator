@@ -69,10 +69,14 @@ function finalScore(){
 
 };
 
+
+//reset
 function inputReset(){
 	numInput.value = 0;
 	finalScore();
 }
+
+// removing and adding dice
 
 function addDice(){
 	var div = document.createElement('div');
@@ -84,7 +88,14 @@ function addDice(){
 	howManyDice++;
 };
 
-
+document.getElementById('diceNumber').onmousedown = function(){
+	removeDice();
+	inputReset();
+}
+document.getElementById('diceNumber').onkeydown = function(){
+	removeDice();
+	inputReset();
+}
 
 function addMoreDice(){
 	for(var i = 0; i < numInput.value; i++){
@@ -102,26 +113,15 @@ function addMoreDice(){
 
 function removeDice(){
 	var removeDiv = document.getElementsByClassName("diceStyle");
-	var value = numInput.value;
-	 if(value >0){
-	 	for(var i = value-1; i >= 0; i--){
-			document.getElementById('diceTable').removeChild(removeDiv[i]);
-		}
-	 }
+	for(var i=0; i < numInput.value; i++){
+		removeDiv[numInput.value-i-1].remove();
+	}
 
-
+	//document.getElementById('diceTable').innerHTML = "";
 }
 
 
-document.getElementById('diceNumber').onmousedown = function(){
-	 removeDice();
-	inputReset();
-}
-// document.getElementById('diceNumber').onkeydown = function(){
-// 	removeDice();
-// 	inputReset();
-// }
-
+// rerolling mechanics
 function rerollAll(){
 	removeDice();
 	addMoreDice();
@@ -212,22 +212,6 @@ function reroll2(){
 	diceToReroll = 0;
 	finalScore();
 }
-
-
-// event listeners
-
-document.getElementById('reset').addEventListener("click", removeDice);
-document.getElementById('reroll-all').addEventListener("click", rerollAll);
-
-document.getElementById('b2').addEventListener("click", reroll2);
-document.getElementById('b3').addEventListener("click", reroll3);
-document.getElementById('b4').addEventListener("click", reroll4);
-document.getElementById('b5').addEventListener("click", reroll5);
-document.getElementById('b6').addEventListener("click", reroll6);
-
-
-
-
 
 
 

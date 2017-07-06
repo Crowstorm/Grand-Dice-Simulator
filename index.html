@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dice Simulator</title>
+	<link rel="stylesheet" type="text/css" href="kostka.css">
+</head>
+<body>
+	<h1>Grand Dice Simulator</h1>
+
+	
+	<p>Pick how many dice you want to roll:</p>
+	<input id="diceNumber" type="number" name="diceNumber" onchange="return addMoreDice()">
+
+
+	<div id="diceTable">
+		
+	</div>
+
+	<button id="reset">Reset</button>
+	<button id="reroll-all">Reroll All</button>
+	<div>
+		<p>Reroll dice lesser than: </p>
+		<button id="b6" >6</button>
+		<button id="b5" >5</button>
+		<button id="b4" >4</button>
+		<button id="b3" >3</button>
+		<button id="b2" >2</button>
+	</div>
+
+	<div>
+		<p>Number of dice with 6: <span id="six">0</span></p>
+		<p>Number of dice with 5 and above: <span id="five">0</span></p>
+		<p>Number of dice with 4 and above: <span id="four">0</span></p>
+		<p>Number of dice with 3 and above: <span id="three">0</span></p>
+		<p>Number of dice with 2 and above: <span id="two">0</span></p>
+	</div>
+
+	<script type="text/javascript" src="kostka.js"></script>
+
+</body>
+</html>

@@ -7,14 +7,24 @@ h1{
 	color: red;
 }
 
+button{
+	padding: 2em;
+}
+
 #diceTable{
 	padding: 2.5%;
 	margin: 0% 10% 5%;
+	text-align: center;
 }
 
 .diceStyle{
+	display: inline-block;
 	height: 50px;
 	width: 50px;
-	float: left;
 	padding: 10px;
+	border: 1px solid red;
+}
+
+#diceNumber{
+	padding: 2em;
 }
