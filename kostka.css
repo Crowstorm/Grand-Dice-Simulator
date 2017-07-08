@@ -12,16 +12,23 @@ button{
 }
 
 #diceTable{
-	padding: 2.5%;
-	margin: 0% 10% 5%;
-	text-align: center;
+	padding: 5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-wrap: wrap;
 }
 
 .diceStyle{
-	display: inline-block;
-	height: 50px;
-	width: 50px;
-	padding: 10px;
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	align-items: center;
+	height: 3em;
+	width: 3em;
+	padding: 1em;
+	color: black;
 	border: 1px solid red;
 }
 

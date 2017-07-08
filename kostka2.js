@@ -69,10 +69,35 @@ function finalScore(){
 
 };
 
+
+//reset
 function inputReset(){
 	numInput.value = 0;
 	finalScore();
 }
+
+//add background
+function background(){
+	var dices = document.getElementsByClassName("diceStyle");
+
+	for(var i=0; i < numInput.value; i++){
+		if(dices[i].textContent == "1"){
+			dices[i].style.backgroundImage = "url('img/1.svg')";
+		} else if(dices[i].textContent == "2"){
+			dices[i].style.backgroundImage = "url('img/2.svg')";
+		} else if(dices[i].textContent == "3"){
+			dices[i].style.backgroundImage = "url('img/3.svg')";
+		} else if(dices[i].textContent == "4"){
+			dices[i].style.backgroundImage = "url('img/4.svg')";
+		} else if(dices[i].textContent == "5"){
+			dices[i].style.backgroundImage = "url('img/5.svg')";
+		} else if(dices[i].textContent == "6"){
+			dices[i].style.backgroundImage = "url('img/6.svg')";
+		}
+	}
+}
+
+// removing and adding dice
 
 function addDice(){
 	var div = document.createElement('div');
@@ -82,10 +107,16 @@ function addDice(){
 
 	document.getElementById('diceTable').appendChild(div);
 	howManyDice++;
-	background();
 };
 
-
+document.getElementById('diceNumber').onmousedown = function(){
+	removeDice();
+	inputReset();
+}
+document.getElementById('diceNumber').onkeydown = function(){
+	removeDice();
+	inputReset();
+}
 
 function addMoreDice(){
 	for(var i = 0; i < numInput.value; i++){
@@ -99,31 +130,19 @@ function addMoreDice(){
 	}
 	currentValue = numInput.value;
 	finalScore();
-	background();
 }
 
 function removeDice(){
 	var removeDiv = document.getElementsByClassName("diceStyle");
-	var value = numInput.value;
-	 if(value >0){
-	 	for(var i = value-1; i >= 0; i--){
-			document.getElementById('diceTable').removeChild(removeDiv[i]);
-		}
-	 }
+	for(var i=0; i < numInput.value; i++){
+		removeDiv[numInput.value-i-1].remove();
+	}
 
-
+	//document.getElementById('diceTable').innerHTML = "";
 }
 
 
-document.getElementById('diceNumber').onmousedown = function(){
-	 removeDice();
-	inputReset();
-}
-// document.getElementById('diceNumber').onkeydown = function(){
-// 	removeDice();
-// 	inputReset();
-// }
-
+// rerolling mechanics
 function rerollAll(){
 	removeDice();
 	addMoreDice();
@@ -138,11 +157,10 @@ function reroll6(){
 			diceToReroll++;
 		}
 	}
-	numInput.value = diceToReroll;
 	for(var i =0; i < diceToReroll; i++){
 		addDice();
 	}
-	
+	numInput.value = currentValue;
 	diceToReroll = 0;
 	finalScore();
 }
@@ -216,31 +234,6 @@ function reroll2(){
 	finalScore();
 }
 
-
-function background(){
-	var dices = document.getElementsByClassName("diceStyle");
-
-	for(var i=0; i < numInput.value; i++){
-		if(dices[i].textContent == "1"){
-			dices[i].style.backgroundImage = "url('img/1.svg')";
-		} else if(dices[i].textContent == "2"){
-			dices[i].style.backgroundImage = "url('img/2.svg')";
-		} else if(dices[i].textContent == "3"){
-			dices[i].style.backgroundImage = "url('img/3.svg')";
-		} else if(dices[i].textContent == "4"){
-			dices[i].style.backgroundImage = "url('img/4.svg')";
-		} else if(dices[i].textContent == "5"){
-			dices[i].style.backgroundImage = "url('img/5.svg')";
-		} else if(dices[i].textContent == "6"){
-			dices[i].style.backgroundImage = "url('img/6.svg')";
-		}
-	}
-}
-
-
-
-// event listeners
-
 document.getElementById('reset').addEventListener("click", removeDice);
 document.getElementById('reroll-all').addEventListener("click", rerollAll);
 
@@ -249,12 +242,6 @@ document.getElementById('b3').addEventListener("click", reroll3);
 document.getElementById('b4').addEventListener("click", reroll4);
 document.getElementById('b5').addEventListener("click", reroll5);
 document.getElementById('b6').addEventListener("click", reroll6);
-
-
-
-
-
-
 
 //Tez dziala
 //numInput.addEventListener("change", function(){
